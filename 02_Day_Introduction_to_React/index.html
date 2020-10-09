@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>30 days of React</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			* {
+				box-sizing: border-box;
+				padding: 0;
+				margin: 0;
+				font-family: 'Noto Sans JP', sans-serif;
+			}
+			.header {
+				background-color: cyan;
+				padding: 5% 0 5% 10%;
+			}
+			.main {
+				padding: 0 0 5% 10%;
+			}
+			.footer {
+				background-color: #61dbfb;
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+			}
+			h1 {
+				font-size: 70px;
+			}
+			li {
+				list-style: none;
+				padding-left: 15px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="root"></div>
+		<script
+			crossorigin
+			src="https://unpkg.com/react@16/umd/react.development.js"
+		></script>
+		<script
+			crossorigin
+			src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+		></script>
+		<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+		<script type="text/babel">
+			const welcome = 'Welcome to 30 Days Of React';
+			const title = 'Getting Started React';
+			const subtitle = 'JavaScript Library';
+			const author = {
+				firstName: 'Cyril',
+				lastName: 'Yamoah',
+			};
+			const { firstName, lastName } = author;
+			const date = new Date();
+			const techs = ['HTML', 'CSS', 'JavaScript'];
+
+			const rootElement = document.querySelector('.root');
+			const headerStyle = {
+				backgroundColor: '#61DBFB',
+				border: '2px solid black',
+				color: 'black',
+				fontSize: '18px',
+			};
+			const header = (
+				<header className='header'>
+					<h1>{welcome}</h1>
+					<h2>{title}</h2>
+					<p>{subtitle}</p>
+					<p>Learner: {firstName + ' ' + lastName}</p>
+					<small>Date: {date.toDateString()}</small>
+				</header>
+			);
+			const mainStyle = {
+				backgroundColor: '#61eb34',
+			};
+			const main = (
+				<main className='main'>
+					<p>Prerequisites for React</p>
+					<ul>
+						{techs.map((tech) => (
+							<li key={tech}>{tech}</li>
+						))}
+					</ul>
+				</main>
+			);
+			const footerStyle = {
+				backgroundColor: '#61DBFB',
+			};
+			const footer = (
+				<footer className='footer'>
+					<p>Copyrights 2020</p>
+				</footer>
+			);
+			const app = (
+				<div className='app'>
+					{header}
+					{main}
+					{footer}
+				</div>
+			);
+			ReactDOM.render(app, rootElement);
+		</script>
+	</body>
+</html>
