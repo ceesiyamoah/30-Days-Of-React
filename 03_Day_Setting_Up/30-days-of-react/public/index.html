@@ -2,80 +2,49 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="User card" />
-		<title>User Card</title>
+		<meta name="viewport" content="Subscribe page" />
+		<title>Subscribe</title>
 		<link
-			href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap"
 			rel="stylesheet"
 		/>
 		<style>
-			* {
+			body,
+			html {
 				box-sizing: border-box;
 				padding: 0;
 				margin: 0;
-				font-family: 'Yanone Kaffeesatz', sans-serif;
+				font-family: 'Noto Sans JP', sans-serif;
 			}
-			.card {
-				border-radius: 5px;
-				border: 2px solid rgb(241, 241, 241);
-				background-color: rgb(241, 241, 241);
-				padding: 10px;
-				margin: 10px;
+			#root {
+				margin: 20px;
+			}
+			.subscribe {
 				display: flex;
 				flex-direction: column;
-			}
-			.user-thumbnail {
-				border-radius: 50%;
-				height: 200px;
-				width: 200px;
-				padding-bottom: 5px;
-			}
-			.name-wrapper {
-				display: flex;
-				flex-direction: row;
-				width: 200px;
-				padding: 10px 0 20px 0;
-				justify-content: space-between;
-			}
-			.name {
-				font-weight: bold;
-				font-size: 32px;
-				letter-spacing: 3px;
-			}
-			.job {
-				width: 200px;
-				font-size: 22px;
-				padding: 10px 0 20px 0;
-			}
-			.verified {
-				width: 18px;
-				height: 18px;
-			}
-			.skill-wrapper {
-				display: flex;
-				justify-content: flex-start;
-				flex-wrap: wrap;
-				padding: 10px;
-			}
-			.skill {
+				background-color: aquamarine;
+				align-items: center;
 				border-radius: 10px;
-				background-color: rgb(3, 192, 192);
+				padding: 20px;
 				text-align: center;
-				color: white;
-				font-size: 32px;
-				font-weight: bold;
-				height: 50px;
-				width: auto;
+			}
+			.subscribe-title,
+			.subscribe-text,
+			.subscribe-form,
+			.subscribe-btn {
 				padding: 10px;
+			}
+			.subscribe-form-input {
 				margin: 10px;
+				border-radius: 10px;
+				border: 10px solid white;
 			}
-			.end > span {
-				font-size: 20px;
-			}
-			.end > img {
-				width: 20px;
-				height: 20px;
-				padding-right: 10px;
+			.subscribe-btn {
+				color: white;
+				background-color: rgba(212, 22, 111, 0.644);
+				border-radius: 10px;
+				width: 15%;
+				border: 0px solid white;
 			}
 		</style>
 	</head>
