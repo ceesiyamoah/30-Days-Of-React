@@ -2,80 +2,36 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="User card" />
-		<title>User Card</title>
+		<meta name="viewport" content="width=wax, initial-scale=1.0" />
+		<title>hex color</title>
 		<link
-			href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap"
 			rel="stylesheet"
 		/>
 		<style>
-			* {
+			body,
+			html {
 				box-sizing: border-box;
 				padding: 0;
 				margin: 0;
-				font-family: 'Yanone Kaffeesatz', sans-serif;
+				font-family: 'Work Sans', sans-serif;
 			}
-			.card {
-				border-radius: 5px;
-				border: 2px solid rgb(241, 241, 241);
-				background-color: rgb(241, 241, 241);
-				padding: 10px;
+			.app {
 				margin: 10px;
-				display: flex;
-				flex-direction: column;
 			}
-			.user-thumbnail {
-				border-radius: 50%;
-				height: 200px;
-				width: 200px;
-				padding-bottom: 5px;
-			}
-			.name-wrapper {
-				display: flex;
-				flex-direction: row;
-				width: 200px;
-				padding: 10px 0 20px 0;
-				justify-content: space-between;
-			}
-			.name {
-				font-weight: bold;
-				font-size: 32px;
-				letter-spacing: 3px;
-			}
-			.job {
-				width: 200px;
-				font-size: 22px;
-				padding: 10px 0 20px 0;
-			}
-			.verified {
-				width: 18px;
-				height: 18px;
-			}
-			.skill-wrapper {
-				display: flex;
-				justify-content: flex-start;
-				flex-wrap: wrap;
-				padding: 10px;
-			}
-			.skill {
-				border-radius: 10px;
-				background-color: rgb(3, 192, 192);
+			.color-holder {
 				text-align: center;
+			}
+			.color-holder > div {
+				border-radius: 10px;
+
+				height: 80px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 30px;
+				margin: 2px;
 				color: white;
-				font-size: 32px;
-				font-weight: bold;
-				height: 50px;
-				width: auto;
-				padding: 10px;
-				margin: 10px;
-			}
-			.end > span {
-				font-size: 20px;
-			}
-			.end > img {
-				width: 20px;
-				height: 20px;
-				padding-right: 10px;
 			}
 		</style>
 	</head>
