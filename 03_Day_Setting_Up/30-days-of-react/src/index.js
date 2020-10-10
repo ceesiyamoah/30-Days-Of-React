@@ -1,16 +1,72 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import cssLogo from './images/css_logo.png';
-import htmlLogo from './images/html_logo.png';
-import reactLogo from './images/react_logo.png';
+import profileThumbnail from './images/img.jpg';
+
+const skills = [
+	'HTML',
+	'CSS',
+	'JS',
+	'React',
+	'Azure',
+	'Python',
+	'Data Analysis',
+	'MySQL',
+	'Numpy',
+	'Pandas',
+	'Git',
+	'C++',
+	'C',
+	'OS',
+	'HTML',
+	'CSS',
+	'JS',
+	'React',
+	'Azure',
+	'Python',
+	'Data Analysis',
+	'MySQL',
+	'Numpy',
+	'Pandas',
+	'Git',
+	'C++',
+	'C',
+	'OS',
+];
 
 const app = (
-	<div>
-		<p className='title'>Front End Technologies</p>
-		<div className='main'>
-			<img src={htmlLogo} alt='html Logo' />
-			<img src={cssLogo} alt='CSS Logo' />
-			<img src={reactLogo} alt='react Logo' />
+	<div className='card'>
+		<img
+			src={profileThumbnail}
+			alt=' User Thumbnail'
+			className='user-thumbnail'
+		/>
+		{/* TODO improve how the text and the icon work */}
+		<div className='name-wrapper'>
+			<span className='name'>CYRIL YAMOAH</span>
+			<img
+				src='https://img.icons8.com/color/48/000000/checked--v1.png'
+				className='verified'
+				alt='verified tick'
+			/>
+		</div>
+		<span className='job'>Junior Developer, Ghana</span>
+		<div className='skills-wrapper'>
+			<span className='name'>Skills</span>
+			<div className='skill-wrapper'>
+				{skills.map((skill) => (
+					<span key={skill} className='skill'>
+						{skill}
+					</span>
+				))}
+			</div>
+		</div>
+		<div className='end'>
+			{/* TODO improve how the text and the icon work */}
+			<img
+				src='https://img.icons8.com/pastel-glyph/64/000000/clock.png'
+				alt='Clock'
+			/>
+			<span>Joined on September 3, 2020</span>
 		</div>
 	</div>
 );
