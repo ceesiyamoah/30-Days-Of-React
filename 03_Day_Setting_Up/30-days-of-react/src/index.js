@@ -1,19 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import cssLogo from './images/css_logo.png';
+import htmlLogo from './images/html_logo.png';
+import reactLogo from './images/react_logo.png';
 
-const app = (
-	<div className='subscribe'>
-		<h1 className='subscribe-title'>SUBSCRIBE</h1>
-		<span className='subscribe-text'>
-			Sign up with your email address to receive news and updates
-		</span>
-		<div className='subscribe-form'>
-			<input placeholder='First name' className='subscribe-form-input' />
-			<input placeholder='Last name' className='subscribe-form-input' />
-			<input placeholder='Email' className='subscribe-form-input' />
+const images = [htmlLogo, cssLogo, reactLogo];
+const title = 'Front End Technologies';
+const App = () => (
+	<div>
+		<p className='title'>{title}</p>
+		<div className='main'>
+			{images.map((image) => (
+				<img src={image} key={image} alt='technology' />
+			))}
 		</div>
-		<button className='subscribe-btn'>Subscribe</button>
 	</div>
 );
 
-ReactDOM.render(app, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));

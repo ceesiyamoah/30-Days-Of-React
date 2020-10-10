@@ -2,49 +2,33 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="Subscribe page" />
-		<title>Subscribe</title>
+		<meta name="viewport" content="Intro to react" />
+		<title>30 days of react</title>
 		<link
-			href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap"
 			rel="stylesheet"
 		/>
 		<style>
-			body,
-			html {
+			* {
 				box-sizing: border-box;
-				padding: 0;
+				font-family: 'Montserrat', sans-serif;
 				margin: 0;
-				font-family: 'Noto Sans JP', sans-serif;
+				padding: 0;
 			}
-			#root {
-				margin: 20px;
-			}
-			.subscribe {
-				display: flex;
-				flex-direction: column;
-				background-color: aquamarine;
-				align-items: center;
-				border-radius: 10px;
-				padding: 20px;
+
+			.title {
 				text-align: center;
+				font-weight: bold;
+				margin: 0;
+				padding: 20px 0;
 			}
-			.subscribe-title,
-			.subscribe-text,
-			.subscribe-form,
-			.subscribe-btn {
-				padding: 10px;
+			.main {
+				display: flex;
+				justify-content: space-around;
 			}
-			.subscribe-form-input {
-				margin: 10px;
-				border-radius: 10px;
-				border: 10px solid white;
-			}
-			.subscribe-btn {
-				color: white;
-				background-color: rgba(212, 22, 111, 0.644);
-				border-radius: 10px;
-				width: 15%;
-				border: 0px solid white;
+			img {
+				height: 300px;
+				width: 300px;
 			}
 		</style>
 	</head>
