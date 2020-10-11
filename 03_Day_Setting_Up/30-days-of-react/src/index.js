@@ -1,34 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import cssLogo from './images/css_logo.png';
+import htmlLogo from './images/html_logo.png';
+import reactLogo from './images/react_logo.png';
 
-const getHexa = () => {
-	const chars = 'abcdef0123456789';
-	let hexa = [];
-	for (let index = 0; index < 6; index++) {
-		hexa += chars[parseInt(Math.random() * chars.length)];
-	}
-	return '#'.concat(hexa);
+const title = 'Front End Technologies';
+const data = {
+	title: title,
+	images: [htmlLogo, cssLogo, reactLogo],
 };
-
-const HexaColor = () => {
-	const color = getHexa();
-	console.log(color);
-	return (
-		<div className='color-holder'>
-			<div style={{ backgroundColor: color }}>{color}</div>
+const App = ({ data: { title, images } }) => (
+	<div>
+		<p className='title'>{title}</p>
+		<div className='main'>
+			{images.map((image) => (
+				<img src={image} key={image} alt='technology' />
+			))}
 		</div>
-	);
-};
-
-const App = () => (
-	<div className='app'>
-		<HexaColor />
-		<HexaColor />
-		<HexaColor />
-		<HexaColor />
-		<HexaColor />
-		<HexaColor />
 	</div>
 );
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App data={data} />, document.getElementById('root'));
