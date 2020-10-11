@@ -2,10 +2,10 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="Subscribe page" />
-		<title>Subscribe</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
 		<link
-			href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Chilanka&display=swap"
 			rel="stylesheet"
 		/>
 		<style>
@@ -14,37 +14,38 @@
 				box-sizing: border-box;
 				padding: 0;
 				margin: 0;
-				font-family: 'Noto Sans JP', sans-serif;
+				font-family: 'Chilanka', cursive;
 			}
-			#root {
-				margin: 20px;
-			}
-			.subscribe {
+			.header-wrapper {
+				padding: 20px;
 				display: flex;
 				flex-direction: column;
-				background-color: aquamarine;
 				align-items: center;
-				border-radius: 10px;
-				padding: 20px;
-				text-align: center;
 			}
-			.subscribe-title,
-			.subscribe-text,
-			.subscribe-form,
-			.subscribe-btn {
+			.header-title {
+				font-size: 60px;
 				padding: 10px;
 			}
-			.subscribe-form-input {
-				margin: 10px;
-				border-radius: 10px;
-				border: 10px solid white;
+			.header-subtitle {
+				font-size: 30px;
+				padding: 10px;
 			}
-			.subscribe-btn {
+			.calendar-wrapper {
+				padding: 10px 15%;
 				color: white;
-				background-color: rgba(212, 22, 111, 0.644);
-				border-radius: 10px;
-				width: 15%;
-				border: 0px solid white;
+				display: flex;
+				flex-wrap: wrap;
+				font-size: 40px;
+			}
+			.calendar-day {
+				background-color: blue;
+				margin: 1px;
+				padding: 10px;
+				width: 10%;
+				height: 100px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 			}
 		</style>
 	</head>

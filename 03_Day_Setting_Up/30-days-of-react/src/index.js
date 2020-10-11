@@ -1,28 +1,75 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const data = {
-	title: 'SUBSCRIBE',
-	text: 'Sign up with your email address to receive news and updates',
-	placeholders: ['First name', 'Last name', 'Email'],
-	btnText: 'subscribe',
+const getDays = (start, end) => {
+	const days = [];
+	for (let i = start; i <= end; i++) {
+		days.push(i);
+	}
+	return days;
+};
+const checkPrime = (number) => {
+	if (number === 1 || number === 0) {
+		return false;
+	}
+	for (let i = 2; i < number; i++) {
+		if (number % i === 0) {
+			return false;
+		}
+	}
+	return true;
 };
 
-const App = ({ data: { title, text, placeholders, btnText } }) => (
-	<div className='subscribe'>
-		<h1 className='subscribe-title'>{title}</h1>
-		<span className='subscribe-text'>{text}</span>
-		<div className='subscribe-form'>
-			{placeholders.map((placeholder) => (
-				<input
-					placeholder={placeholder}
-					key={placeholder}
-					className='subscribe-form-input'
-				/>
+const data = {
+	header: { title: '30 days of react', subtitle: 'Number Generator' },
+	numbers: getDays(0, 31),
+};
+
+const Header = ({ header: { title, subtitle } }) => {
+	return (
+		<div className='header-wrapper'>
+			<span className='header-title'>{title}</span>
+			<span className='header-subtitle'>{subtitle}</span>
+		</div>
+	);
+};
+const Calendar = ({ days }) => {
+	return (
+		<div className='calendar-wrapper'>
+			{days.map((day) => (
+				<Day day={day} key={day} />
 			))}
 		</div>
-		<button className='subscribe-btn'>{btnText}</button>
-	</div>
-);
+	);
+};
+const Day = ({ day }) => {
+	if (checkPrime(day)) {
+		return (
+			<div className='calendar-day' style={{ backgroundColor: 'red' }}>
+				{day}
+			</div>
+		);
+	} else if (day % 2 === 0) {
+		return (
+			<div className='calendar-day' style={{ backgroundColor: 'green' }}>
+				{day}
+			</div>
+		);
+	}
+	return (
+		<div className='calendar-day' style={{ backgroundColor: 'blue' }}>
+			{day}
+		</div>
+	);
+};
+
+const App = ({ data: { header, numbers } }) => {
+	return (
+		<div>
+			<Header header={header} />
+			<Calendar days={numbers} />
+		</div>
+	);
+};
 
 ReactDOM.render(<App data={data} />, document.getElementById('root'));
