@@ -1,30 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const getDays = (start, end) => {
-	const days = [];
-	for (let i = start; i <= end; i++) {
-		days.push(i);
-	}
-	return days;
-};
-const checkPrime = (number) => {
-	if (number === 1 || number === 0) {
-		return false;
-	}
-	for (let i = 2; i < number; i++) {
-		if (number % i === 0) {
-			return false;
-		}
-	}
-	return true;
-};
-
 const data = {
-	header: { title: '30 days of react', subtitle: 'Number Generator' },
-	numbers: getDays(0, 31),
+	header: {
+		title: '30 Days Of React',
+		subtitle: 'Hexadecimal Colors',
+	},
+	numberOfCells: 32,
 };
 
+const getHex1 = () => {
+	const chars = '0123456789abcdef';
+	const hex = [];
+	for (let i = 0; i < 6; i++) {
+		hex.push(chars[parseInt(Math.random() * 16)]);
+	}
+	return '#' + hex.join('');
+};
 const Header = ({ header: { title, subtitle } }) => {
 	return (
 		<div className='header-wrapper'>
@@ -33,43 +25,34 @@ const Header = ({ header: { title, subtitle } }) => {
 		</div>
 	);
 };
-const Calendar = ({ days }) => {
+const Grid = ({ getHex, numberOfCells }) => {
+	const cellsArray = [];
+	for (let i = 0; i < numberOfCells; i++) {
+		cellsArray.push(i);
+	}
 	return (
-		<div className='calendar-wrapper'>
-			{days.map((day) => (
-				<Day day={day} key={day} />
+		<div className='grid-wrapper'>
+			{cellsArray.map((cell) => (
+				<Cell getHex={getHex} key={cell} />
 			))}
 		</div>
 	);
 };
-const Day = ({ day }) => {
-	if (checkPrime(day)) {
-		return (
-			<div className='calendar-day' style={{ backgroundColor: 'red' }}>
-				{day}
-			</div>
-		);
-	} else if (day % 2 === 0) {
-		return (
-			<div className='calendar-day' style={{ backgroundColor: 'green' }}>
-				{day}
-			</div>
-		);
-	}
+const Cell = ({ getHex }) => {
+	const color = getHex();
 	return (
-		<div className='calendar-day' style={{ backgroundColor: 'blue' }}>
-			{day}
+		<div className='cell-wrapper' style={{ backgroundColor: color }}>
+			{color}
 		</div>
 	);
 };
-
-const App = ({ data: { header, numbers } }) => {
-	return (
-		<div>
-			<Header header={header} />
-			<Calendar days={numbers} />
-		</div>
-	);
-};
-
-ReactDOM.render(<App data={data} />, document.getElementById('root'));
+const App = ({ data: { header, numberOfCells }, getHex }) => (
+	<div>
+		<Header header={header} />
+		<Grid getHex={getHex} numberOfCells={numberOfCells} />
+	</div>
+);
+ReactDOM.render(
+	<App data={data} getHex={getHex1} />,
+	document.getElementById('root')
+);
