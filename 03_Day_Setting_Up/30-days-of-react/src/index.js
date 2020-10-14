@@ -1,138 +1,83 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import cyrilImage from './images/img.jpg';
-
-//* * Improve implementation of theme toggle
+import { countriesData } from './countries';
 
 const Header = ({
-	header: {
-		headerTitle,
-		headerSubtile,
-		authorName,
-		date,
-		theme: { backgroundColor, fontColor },
-	},
+	header: { headerTitle, headerSubtile, authorName, date, instruction },
 }) => {
 	return (
-		<div
-			className='header-wrapper'
-			style={{ backgroundColor: backgroundColor, color: fontColor }}
-		>
+		<div className='header-wrapper'>
 			<span className='header-title'>{headerTitle}</span>
 			<span className='header-subtitle'>{headerSubtile}</span>
 			<span>{authorName}</span>
 			<span>{date}</span>
+			<span>{instruction}</span>
 		</div>
 	);
 };
 
-const Pre = ({
-	requirements: {
-		requirements,
-		theme: { backgroundColor },
+const Stats = ({ stats: { languages, capital, population, currency } }) => {
+	const commarize = (num) =>
+		num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	return (
+		<div className='stats-wrapper'>
+			<span>
+				<b>Capital: &nbsp;</b> {capital}
+			</span>
+			<span>
+				<b>Language: &nbsp;</b> {languages[0]}
+			</span>
+			<span>
+				<b>Population: &nbsp;</b> {commarize(population)}
+			</span>
+			<span>
+				<b>Currency: &nbsp;</b> {currency}
+			</span>
+		</div>
+	);
+};
+
+const CountryDetail = ({
+	country: {
+		country: { flag, name, ...stats },
 	},
 }) => {
-	let bgColor =
-		'rgb(7, 175, 218)' === backgroundColor ? 'white' : 'rgb(10, 3, 112)';
 	return (
-		<div className='req-wrapper' style={{ backgroundColor: bgColor }}>
-			<span>Prerequisites for react.js are</span>
-			<ul className='req-list'>
-				{requirements.map((item) => (
-					<li key={item}>{item}</li>
-				))}
-			</ul>
-		</div>
-	);
-};
-
-const Profile = ({ details: { image, authorName }, bgColor }) => {
-	let bacgColor = 'rgb(7, 175, 218)' === bgColor ? 'white' : 'rgb(10, 3, 112)';
-	return (
-		<div className='profile-wrapper' style={{ backgroundColor: bacgColor }}>
-			<img src={image} alt='profile' className='profile-image' />
-			<span>{authorName}</span>
-		</div>
-	);
-};
-
-const Footer = ({ year, bgColor }) => {
-	return (
-		<div className='footer' style={{ backgroundColor: bgColor }}>
-			&copy; {year}
-		</div>
-	);
-};
-
-const ButtonGroup = ({ changeTheme, bgColor }) => {
-	let bacgColor = 'rgb(7, 175, 218)' === bgColor ? 'white' : 'rgb(10, 3, 112)';
-	return (
-		<div className='btn-wrapper' style={{ backgroundColor: bacgColor }}>
-			<button
-				onClick={() => {
-					alert('Good day');
-				}}
-			>
-				Greet People
-			</button>{' '}
-			<button
-				onClick={() => {
-					alert(new Date().toTimeString());
-				}}
-			>
-				Show Time
-			</button>{' '}
-			<button onClick={changeTheme}>Change Theme</button>
+		<div className='country-details-wrapper'>
+			<div className='country-wrapper'>
+				<img src={flag} alt='country' />
+				<span className='country-name'>{name}</span>
+				<Stats stats={stats} />
+			</div>
 		</div>
 	);
 };
 
 class App extends Component {
 	state = {
-		bgColor: 'rgb(7, 175, 218)',
-		fontColor: 'black',
+		country: countriesData[parseInt(Math.random() * countriesData.length)],
 	};
-	changeTheme = () => {
-		let newColor = [];
-		if (this.state.bgColor === 'rgb(7, 175, 218)') {
-			newColor = ['rgb(10, 3, 112)', 'white'];
-		} else {
-			newColor = ['rgb(7, 175, 218)', 'black'];
-		}
-		this.setState({ bgColor: newColor[0], fontColor: newColor[1] });
-		console.log(newColor);
+	changeCountry = () => {
+		this.setState({
+			country: countriesData[parseInt(Math.random() * countriesData.length)],
+		});
 	};
+
 	render() {
 		const data = {
 			headerTitle: 'Welcome to 30 days of React',
 			headerSubtile: 'Getting Started with React',
 			authorName: 'Cyril Yamoah',
 			date: new Date().toDateString(),
-			requirements: ['HTML', 'CSS', 'JavaScript'],
-			image: cyrilImage,
-			theme: {
-				backgroundColor: this.state.bgColor,
-				fontColor: this.state.fontColor,
-			},
+			instruction: 'Select a country for next holiday',
+			countries: countriesData,
 		};
 
 		return (
-			<div
-				className='App'
-				style={{
-					backgroundColor: this.state.bgColor,
-					color: this.state.fontColor,
-				}}
-			>
+			<div className='App'>
 				<Header header={data} />
-				<Pre requirements={data} />
-				<Profile details={data} bgColor={this.state.bgColor} />
-				<ButtonGroup
-					changeTheme={this.changeTheme}
-					bgColor={this.state.bgColor}
-				/>
-
-				<Footer year='2020' bgColor={this.state.bgColor} />
+				<CountryDetail country={this.state} />
+				<button onClick={this.changeCountry}>Select Country</button>
 			</div>
 		);
 	}
