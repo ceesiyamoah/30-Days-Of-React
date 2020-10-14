@@ -2,11 +2,19 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { countriesData } from './countries';
 
+const seasons = [
+	{ name: 'summer', bgColor: '#d62828', fontColor: 'white' },
+	{ name: 'autumn', bgColor: '#003049', fontColor: 'white' },
+	{ name: 'spring', bgColor: '#a8dadc', fontColor: 'black' },
+	{ name: 'winter', bgColor: '#0077b6', fontColor: 'white' },
+];
+
 const Header = ({
 	header: { headerTitle, headerSubtile, authorName, date, instruction },
+	season: { bgColor, fontColor },
 }) => {
 	return (
-		<div className='header-wrapper'>
+		<div className='header-wrapper' style={{ backgroundColor: bgColor }}>
 			<span className='header-title'>{headerTitle}</span>
 			<span className='header-subtitle'>{headerSubtile}</span>
 			<span>{authorName}</span>
@@ -56,10 +64,17 @@ const CountryDetail = ({
 class App extends Component {
 	state = {
 		country: countriesData[parseInt(Math.random() * countriesData.length)],
+		season: seasons[parseInt(Math.random() * 4)],
 	};
 	changeCountry = () => {
 		this.setState({
 			country: countriesData[parseInt(Math.random() * countriesData.length)],
+		});
+		console.log(this.state);
+	};
+	changeSeason = () => {
+		this.setState({
+			season: seasons[parseInt(Math.random() * 4)],
 		});
 	};
 
@@ -74,10 +89,17 @@ class App extends Component {
 		};
 
 		return (
-			<div className='App'>
-				<Header header={data} />
+			<div
+				className='App'
+				style={{
+					backgroundColor: this.state.season.bgColor,
+					color: this.state.season.fontColor,
+				}}
+			>
+				<Header header={data} season={this.state.season} />
 				<CountryDetail country={this.state} />
 				<button onClick={this.changeCountry}>Select Country</button>
+				<button onClick={this.changeSeason}>Select day</button>
 			</div>
 		);
 	}
