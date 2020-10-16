@@ -4,87 +4,24 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
-		<link
-			href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-			rel="stylesheet"
-		/>
 		<style>
-			body {
-				box-sizing: border-box;
-				padding: 0;
-				margin: 0;
-				font-family: 'Roboto', sans-serif;
-			}
-
-			.header-wrapper {
+			#root {
 				display: flex;
-				flex-direction: column;
-				align-items: flex-start;
-				text-align: center;
-				padding: 2% 10%;
-				background-color: rgb(7, 175, 218);
+				justify-content: center;
 			}
-			.header-wrapper > span {
-				padding-top: 1px;
-			}
-			.App {
-				display: flex;
-				flex-direction: column;
-				height: 100vh;
-			}
-			.header-title {
-				font-size: 60px;
-			}
-			.header-subtitle {
-				font-size: 30px;
-			}
-			.country-details-wrapper {
+			.app {
+				width: 100vw;
+				height: 5vh;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				margin: 20px 0;
-				font-size: 20px;
 			}
-			.country-wrapper {
+			.app > form {
 				display: flex;
 				flex-direction: column;
-				box-shadow: 0 0 5px gray;
-				width: 40%;
-				justify-content: center;
-				align-items: center;
-				border-radius: 5px;
 			}
-			.country-wrapper > img {
-				width: 300px;
-				height: 150px;
-				box-shadow: 0 0 5px gray;
-				margin: 10px 0 0 0;
-			}
-			.country-name {
-				display: flex;
-				justify-content: center;
-				margin: 10px;
-			}
-			.stats-wrapper {
-				display: flex;
-				flex-direction: column;
-				width: 100%;
-			}
-			.stats-wrapper > span {
-				padding: 5px 5px 5px 20px;
-				display: flex;
-				justify-content: flex-start;
-				flex-direction: row;
-			}
-			.App > button {
-				background-color: rgb(7, 175, 218);
-				border: 0;
-				width: 10%;
-				align-self: center;
-				font-size: 15px;
-				cursor: pointer;
-				padding: 10px;
-				margin: 10px;
+			form > input {
+				margin: 5px;
 			}
 		</style>
 	</head>
