@@ -6,12 +6,11 @@
 		<title>Document</title>
 		<style>
 			#root {
-				display: flex;
-				justify-content: center;
+				box-sizing: border-box;
+				padding: 0;
+				margin: 0;
 			}
 			.app {
-				width: 100vw;
-				height: 5vh;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
@@ -20,8 +19,9 @@
 				display: flex;
 				flex-direction: column;
 			}
-			form > input {
-				margin: 5px;
+			label > input {
+				display: flex;
+				justify-content: flex-end;
 			}
 		</style>
 	</head>
