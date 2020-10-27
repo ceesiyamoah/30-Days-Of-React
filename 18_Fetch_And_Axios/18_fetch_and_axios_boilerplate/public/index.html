@@ -1,111 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500|Roboto:300,400,500&display=swap"
-      rel="stylesheet"
-    />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link
+			href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500|Roboto:300,400,500&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Syne+Tactile&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap"
+			rel="stylesheet"
+		/>
+		<meta
+			name="description"
+			content="Web site created using create-react-app"
+		/>
 
-    <title>30 Days Of React App</title>
-    <style>
-    
-      /* == General style === */
-      
-      * {
-        box-sizing: border-box;
-        padding: 0;
-        margin: 0;
-      }
+		<title>30 Days Of React App</title>
+		<style>
+			/* == General style === */
 
-      html,
-      body {
-        height: 100%;
-        line-height: 1.5;
-        font-family: 'Montserrat';
-        font-weight: 300;
-        color: black;
-      }
+			* {
+				box-sizing: border-box;
+				padding: 0;
+				margin: 0;
+			}
 
-      .root {
-        min-height: 100%;
-        position: relative;
-      }
+			html,
+			body {
+				height: 100%;
+				line-height: 1.5;
+				font-family: 'Montserrat';
+				font-weight: 300;
+				color: black;
+			}
 
-      .header-wrapper,
-      .main-wrapper,
-      .footer-wrapper {
-        width: 85%;
-        margin: auto;
-      }
+			.root {
+				min-height: 100%;
+				position: relative;
+			}
 
-      .header-wrapper,
-      .main-wrapper {
-        padding: 10px;
-        margin: 2px auto;
-      }
+			.header-wrapper,
+			.main-wrapper,
+			.footer-wrapper {
+				width: 85%;
+				margin: auto;
+			}
 
-      h1 {
-        font-size: 70px;
-        font-weight: 300;
-      }
+			.header-wrapper,
+			.main-wrapper {
+				padding: 10px;
+				margin: 2px auto;
+			}
+			.App {
+				display: flex;
+				align-items: center;
+				flex-direction: column;
+			}
+			.catDetails {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				font-family: 'Henny Penny', cursive;
+			}
+			.circleBorder {
+				border: white dotted 2px;
+				border-radius: 50%;
 
-      h2,
-      h3 {
-        font-weight: 300;
-      }
+				width: 300px;
+				height: 300px;
+				text-align: center;
+			}
+			.cat {
+				width: 70vw;
+				margin: 5px;
+				padding: 10px;
+				box-shadow: 1px 1px 5px grey;
+				font-size: 30px;
+			}
+			.cat:hover {
+				box-shadow: 1px 1px 10px grey;
+			}
+			text > span {
+				font-size: 2em;
+				color: rgb(0, 241, 0);
+				font-family: 'Syne Tactile', cursive;
+			}
 
-      header {
-        background-color: #61dbfb;
-        padding: 25;
-        padding: 10px;
-      }
+			h1 {
+				font-size: 70px;
+				font-weight: 300;
+			}
 
-      main {
-        padding: 10px;
-        padding-bottom: 60px;
-        /* Height of the footer */
-      }
+			h2,
+			h3 {
+				font-weight: 300;
+			}
+			.title {
+				color: grey;
+			}
 
-      ul {
-        margin-left: 15px;
-      }
+			header {
+				background-color: #61dbfb;
+				padding: 25;
+				padding: 10px;
+				width: 100vw;
+			}
 
-      ul li {
-        list-style: none;
-      }
+			main {
+				padding: 10px;
+				padding-bottom: 60px;
+				/* Height of the footer */
+			}
 
-      footer {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 60px;
-        /* Height of the footer */
-        background: #6cf;
-      }
+			ul {
+				margin-left: 15px;
+			}
 
-      .footer-wrapper {
-        font-weight: 400;
-        text-align: center;
-        line-height: 60px;
-      }
-      .user-card {
-        margin-top: 10px;
-      }
-      .user-card > img {
-        border-radius: 50%;
-        width: 14%;
-      }
-      
-    </style>
-    
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+			ul li {
+				list-style: none;
+			}
+
+			footer {
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				height: 60px;
+				/* Height of the footer */
+				background: #6cf;
+			}
+
+			.footer-wrapper {
+				font-weight: 400;
+				text-align: center;
+				line-height: 60px;
+			}
+			.user-card {
+				margin-top: 10px;
+			}
+			.user-card > img {
+				border-radius: 50%;
+				width: 14%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="root"></div>
+	</body>
 </html>

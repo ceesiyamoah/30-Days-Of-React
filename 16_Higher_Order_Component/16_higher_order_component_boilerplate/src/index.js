@@ -1,99 +1,83 @@
-import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
-
-const Button = ({ onClick, text, style }) => {
-  return (
-    <button onClick={onClick} style={style}>
-      {text}
-    </button>
-  )
-}
-
-const buttonWithStyles = (CompParam, name = 'default') => {
-  const colors = [
-    {
-      name: 'default',
-      backgroundColor: '#e7e7e7',
-      color: '#000000',
-    },
-    {
-      name: 'react',
-      backgroundColor: '#61dbfb',
-      color: '#ffffff',
-    },
-    {
-      name: 'success',
-      backgroundColor: '#4CAF50',
-      color: '#ffffff',
-    },
-    {
-      name: 'info',
-      backgroundColor: '#2196F3',
-      color: '#ffffff',
-    },
-    {
-      name: 'warning',
-      backgroundColor: '#ff9800',
-      color: '#ffffff',
-    },
-    {
-      name: 'danger',
-      backgroundColor: '#f44336',
-      color: '#ffffff',
-    },
-  ]
-  const { backgroundColor, color } = colors.find((c) => c.name === name)
-
-  const buttonStyles = {
-    backgroundColor,
-    padding: '10px 45px',
-    border: 'none',
-    borderRadius: 3,
-    margin: 3,
-    cursor: 'pointer',
-    fontSize: '1.25rem',
-    color,
-  }
-  return (props) => {
-    return <CompParam {...props} style={buttonStyles} />
-  }
-}
-
-const NewButton = buttonWithStyles(Button)
-const ReactButton = buttonWithStyles(Button, 'react')
-const InfoButton = buttonWithStyles(Button, 'info')
-const WarningButton = buttonWithStyles(Button, 'warning')
-const DangerButton = buttonWithStyles(Button, 'danger')
-const SuccessButton = buttonWithStyles(Button, 'success')
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import { Home } from './components/Home';
+import { Contact } from './components/Contact';
+import { About } from './components/About';
+import { NavBar } from './components/NavBar';
+import { Challenges } from './components/Challenges';
+import { Challenge } from './components/Challenge';
+import {
+	BrowserRouter as Router,
+	Prompt,
+	Redirect,
+	Route,
+	Switch,
+} from 'react-router-dom';
+import { Social } from './components/Social';
+import { socialDetails } from './data/challengeData';
+import { Login } from './components/Login';
+import { User } from './components/User';
 
 class App extends Component {
-  render() {
-    return (
-      <div className='App'>
-        <h1>Higher Order Components</h1>
-        <Button text='No Style' onClick={() => alert('I am not styled yet')} />
-        <NewButton
-          text='Styled Button'
-          onClick={() => alert('I am the default style')}
-        />
-        <ReactButton text='React' onClick={() => alert('I have react color')} />
-        <InfoButton
-          text='Info'
-          onClick={() => alert('I am styled with info color')}
-        />
-        <SuccessButton text='Success' onClick={() => alert('I am successful')} />
-        <WarningButton
-          text='Warning'
-          onClick={() => alert('I warn you many times')}
-        />
-        <DangerButton
-          text='Danger'
-          onClick={() => alert('Oh no, you can not restore it')}
-        />
-      </div>
-    )
-  }
+	state = {
+		loggedIn: false,
+		firstName: 'cyril',
+	};
+	handleLogin = () => {
+		this.setState({ loggedIn: !this.state.loggedIn });
+	};
+	render() {
+		return (
+			<Router>
+				<div className='App'>
+					<NavBar userName={this.state.firstName} />
+					<Prompt message='Are you sure you want to leave' />
+					<Switch>
+						<Route path='/contact' component={Contact} />
+						<Route path='/about' exact component={About} />
+						<Route
+							path='/login'
+							component={(props) => (
+								<Login
+									{...props}
+									loggedIn={this.state.loggedIn}
+									handleLogin={this.handleLogin}
+								/>
+							)}
+						/>
+						<Route
+							path='/user/:username'
+							component={(props) => (
+								<User
+									{...props}
+									loggedIn={this.state.loggedIn}
+									handleLogin={this.handleLogin}
+								/>
+							)}
+						/>
+						<Route
+							path='/about/:id'
+							component={(props) => <Social {...props} data={socialDetails} />}
+						/>
+						<Route
+							path='/challenges'
+							exact
+							component={(props) =>
+								this.state.loggedIn ? (
+									<Challenges {...props} />
+								) : (
+									<Redirect to='/user/cyril' />
+								)
+							}
+						/>
+						<Route path='/challenges/:id' component={Challenge} />
+						<Route path='/' exact component={Home} />
+					</Switch>
+				</div>
+			</Router>
+		);
+	}
 }
 
-const rootElement = document.getElementById('root')
-ReactDOM.render(<App />, rootElement)
+const rootElement = document.getElementById('root');
+ReactDOM.render(<App />, rootElement);

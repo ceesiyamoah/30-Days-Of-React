@@ -1,37 +1,31 @@
+import Axios from 'axios';
 import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class App extends Component {
-	constructor(props) {
-		super(props);
-		console.log('I am  the constructor and  I will be the first to run.');
+	constructor() {
+		super();
 		this.state = {
-			firstName: 'John',
-			day: 1,
+			countries: [],
 		};
 	}
-
-	shouldComponentUpdate(nextProps, nextState) {
-		console.log(nextProps, nextState);
-		console.log(nextState.day);
-		if (nextState.day > 31) {
-			return false;
-		} else {
-			return true;
-		}
+	componentDidMount() {
+		axios
+			.get('https://restcountries.eu/rest/v2/all')
+			.then(({ data }) => this.setState({ countries: data }))
+			.catch((error) => console.log(error));
 	}
-	// the doChallenge increment the day by one
-	doChallenge = () => {
-		this.setState({
-			day: this.state.day + 1,
-		});
-	};
+
 	render() {
 		return (
-			<div className='App'>
-				<h1>React Component Life Cycle</h1>
-				<button onClick={this.doChallenge}>Do Challenge</button>
-				<p>Challenge: Day {this.state.day}</p>
-				{this.state.congratulate && <h2>{this.state.congratulate}</h2>}
+			<div>
+				{this.state.countries.map((country) => (
+					<div key={country.alpha2Code}>
+						<p>{country.name}</p>
+						<p>{country.capital}</p>
+						<p>{country.population}</p>
+					</div>
+				))}
 			</div>
 		);
 	}
