@@ -1,8 +1,23 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import { CatDetails } from './components/CatDetails';
-import { Cat } from './components/Cat';
+
+const Country = ({ country: { name, flag, population } }) => {
+	return (
+		<div className='country'>
+			<div className='country_flag'>
+				<img src={flag} alt={name} />
+			</div>
+			<h3 className='country_name'>{name.toUpperCase()}</h3>
+			<div class='country_text'>
+				<p>
+					<span>Population: </span>
+					{population}
+				</p>
+			</div>
+		</div>
+	);
+};
 
 class App extends Component {
 	state = { data: [] };
